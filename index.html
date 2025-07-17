@@ -88,18 +88,22 @@
   </form>
 
   <script>
-    const input = document.getElementById('link');
+  const input = document.getElementById('link');
 
-    function navegar() {
-      const valor = input.value.trim();
-      if (valor.startsWith("http")) {
-        window.location.href = valor;
-      } else {
-        alert("Link inválido.");
-      }
+  function navegar() {
+    const valorOriginal = input.value || "";
+    const valor = valorOriginal.trim();
+
+    // Permitir http:// ou https:// e redirecionar
+    if (/^https?:\/\/[^ "]+$/.test(valor)) {
+      window.location.href = valor;
+    } else {
+      alert("Link inválido: " + valor);
     }
+  }
 
-    input.addEventListener("change", navegar);
-  </script>
+  input.addEventListener("change", navegar);
+</script>
+
 </body>
 </html>
