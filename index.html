@@ -5,57 +5,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Posto de Consulta</title>
   <style>
+    :root {
+      --vermelho-santander: #ec0000;
+    }
+
     body {
       margin: 0;
-      background-color: #ec0000; /* Vermelho Santander */
+      padding: 0;
+      background-color: var(--vermelho-santander);
       font-family: Arial, sans-serif;
       height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      position: relative;
+      overflow: hidden;
     }
 
-    .logo-container {
+    .logo-bar {
       position: absolute;
-      top: 30px;
+      top: 20px;
       width: 100%;
       display: flex;
       justify-content: space-between;
       padding: 0 40px;
       box-sizing: border-box;
+      align-items: center;
     }
 
-    .logo-container img {
-      height: 60px; /* Aumenta conforme necessário */
+    .logo-bar img {
+      height: 80px; /* aumenta o tamanho dos logos */
       object-fit: contain;
     }
 
     .titulo {
       color: white;
-      font-size: 2.5rem;
+      font-size: 3rem;
       font-weight: bold;
+      margin-top: 100px;
       text-align: center;
     }
 
     input[type="text"] {
       position: absolute;
-      top: 10px;
-      left: 10px;
-      width: 300px;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       opacity: 0;
-      z-index: 10;
       border: none;
       background: transparent;
-      color: white;
       caret-color: white;
       text-transform: none;
+      font-size: 16px;
+      z-index: 999;
+    }
+
+    form {
+      position: absolute;
+      width: 100%;
+      height: 100%;
     }
   </style>
 </head>
 <body>
-  <div class="logo-container">
+  <div class="logo-bar">
     <img src="logo_santander.png" alt="Santander">
     <img src="logo_kidzania.png" alt="KidZania">
   </div>
