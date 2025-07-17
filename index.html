@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Posto de Consulta</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #e30613;
+      font-family: sans-serif;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 40px;
+    }
+    input {
+      font-size: 20px;
+      padding: 10px;
+      border: none;
+      width: 80%;
+      max-width: 500px;
+      border-radius: 5px;
+      color: black;
+    }
+    .logo { position: absolute; top: 20px; left: 20px; }
+    .kidzania {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">
+    <img src="santander-logo.png" height="40" alt="Santander">
+  </div>
+  <h1>Posto de Consulta</h1>
+  <input id="qr" type="text" placeholder="Escaneie aqui o código QR" autofocus />
+  <div class="kidzania">
+    <img src="kidzania-logo.png" height="40" alt="KidZania">
+  </div>
+  <script>
+    const input = document.getElementById("qr");
+    input.focus();
+    input.addEventListener("change", function () {
+      let val = this.value.trim();
+      val = val.replace(/^(https?:\/\/)+/, "https://");
+      if (!val.startsWith("http")) val = "https://" + val;
+      window.location.href = val;
+    });
+  </script>
+</body>
+</html>
