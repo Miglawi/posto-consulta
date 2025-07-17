@@ -94,9 +94,15 @@
     const valorOriginal = input.value || "";
     const valor = valorOriginal.trim();
 
-    // Permitir http:// ou https:// e redirecionar
-    if (/^https?:\/\/[^ "]+$/.test(valor)) {
-      window.location.href = valor;
+    // Forçar o protocolo a minúsculas apenas
+    const regex = /^(https?):\/\/(.+)$/i;
+    const match = valor.match(regex);
+
+    if (match) {
+      const protocolo = match[1].toLowerCase();
+      const resto = match[2];
+      const urlCorrigida = `${protocolo}://${resto}`;
+      window.location.href = urlCorrigida;
     } else {
       alert("Link inválido: " + valor);
     }
@@ -104,6 +110,7 @@
 
   input.addEventListener("change", navegar);
 </script>
+
 
 </body>
 </html>
